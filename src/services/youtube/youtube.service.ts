@@ -1,7 +1,7 @@
 import type { YoutubeChannel } from '../../domain/Youtube.domain';
 
 export interface YoutubeAdapter {
-  getChannel(channelId: string): Promise<YoutubeChannel>
+  getChannel(channelId: string): Promise<YoutubeChannel>;
 }
 
 export class YoutubeService {
@@ -14,7 +14,6 @@ export class YoutubeService {
   async getChannel(channelId: string): Promise<YoutubeChannel> {
     return this.adapter.getChannel(channelId);
   }
-
 }
 
 export default YoutubeService;

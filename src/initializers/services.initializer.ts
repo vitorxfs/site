@@ -9,5 +9,5 @@ export function getYoutubeAdapter(): YoutubeAdapter {
 export function getYoutubeService(): YoutubeService {
   const adapter = getYoutubeAdapter();
 
-  return new YoutubeService(adapter)
+  return new YoutubeService(adapter);
 }
