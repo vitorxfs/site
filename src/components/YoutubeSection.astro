@@ -1,0 +1,32 @@
+---
+import Section from './Section.astro';
+
+import { getYoutubeService } from '../initializers/services.initializer';
+
+interface Props {}
+
+const youtubeService = getYoutubeService();
+const data = await youtubeService.getChannel('UCFDVoZUAg17C84TT1U5-Glg')
+const videos = data.videos.splice(0, 2);
+
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=43200, must-revalidate');
+---
+
+<Section title="Youtube">
+  <ul class="flex gap-8">
+    {videos?.map((video) => (
+      <li class="max-w-[500px]">
+        <a href={video.url} target="_blank">
+          <img
+            alt=""
+            src={video.thumbnail.url}
+            width={video.thumbnail.width}
+            height={video.thumbnail.height}
+            class="object-cover aspect-video rounded-2xl"
+          />
+          <p class="whitespace-normal mt-2">{video.title}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Section>
