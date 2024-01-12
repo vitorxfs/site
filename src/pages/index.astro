@@ -1,4 +1,5 @@
 ---
+import BlogSection from '../components/BlogSection.astro';
 import YoutubeSection from '../components/YoutubeSection.astro';
 import Layout from '../layouts/Layout.astro';
 
@@ -11,7 +12,9 @@ import '@fontsource/yeseva-one';
   </header>
   <main class="flex flex-col gap-20">
     <YoutubeSection />
+    <BlogSection />
   </main>
+  <footer class="h-28"></footer>
 </Layout>
 
 <style>

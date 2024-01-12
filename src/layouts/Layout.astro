@@ -1,6 +1,4 @@
 ---
-import '@fontsource/montserrat';
-
 interface Props {
   title: string;
 }
@@ -23,7 +21,12 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  * {
-    font-family: 'Montserrat', sans-serif;
+  @media (prefers-color-scheme: dark) {
+    .text-lighter {
+      color: #aaaaaa;
+    }
+  }
+  .text-lighter {
+    color: #555555;
   }
 </style>

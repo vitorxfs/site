@@ -1,0 +1,28 @@
+---
+import Section from './Section.astro';
+
+import { getMediumService } from '../initializers/services.initializer';
+
+interface Props {}
+
+const mediumService = getMediumService();
+const data = await mediumService.getPosts('vitorsnx');
+const posts = data.splice(0, 2);
+
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=43200, must-revalidate');
+---
+
+<Section title="Blog">
+  <ul class="flex gap-8">
+    {
+      posts?.map((post) => (
+        <li class="max-w-[500px]">
+          <a href={post.url} target="_blank">
+            <h3 class="text-2xl font-bold">{post.title}</h3>
+            <p class="whitespace-normal mt-2 text-xl text-lighter">{post.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

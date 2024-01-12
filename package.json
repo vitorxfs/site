@@ -24,7 +24,7 @@
     "@astrojs/check": "^0.4.1",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/montserrat": "^5.0.16",
+    "@fontsource-variable/montserrat": "^5.0.17",
     "@fontsource/yeseva-one": "^5.0.18",
     "astro": "^4.1.1",
     "cheerio": "^1.0.0-rc.12",
@@ -36,9 +36,9 @@
     "@typescript-eslint/parser": "^6.18.1",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.0",
+    "husky": "^8.0.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
-    "prettier-plugin-astro": "^0.12.3",
-    "husky": "^8.0.0"
+    "prettier-plugin-astro": "^0.12.3"
   }
 }
