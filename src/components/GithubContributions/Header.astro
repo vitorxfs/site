@@ -1,5 +1,6 @@
 ---
 import type { Contribution } from '../../domain/Github.domain';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 interface Props {
   contributions: Contribution[];
@@ -8,8 +9,12 @@ interface Props {
 const { contributions } = Astro.props;
 
 const yearContributionsCount = contributions.reduce((acc, { count }) => acc + count, 0);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <p class="mb-2 text-gray-800 dark:text-gray-300 text-xs md:text-sm">
-  {yearContributionsCount} Contribuições no último ano
+  {yearContributionsCount}
+  {t('github.year-contributions')}
 </p>

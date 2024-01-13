@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl, useMetaTranslations } from '../i18n/utils';
 import GlobalStyles from './GlobalStyles.astro';
 
 interface Props {
@@ -6,13 +7,16 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const mt = useMetaTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="en" class="relative">
+<html lang={lang} class="relative">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={mt('description')} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />

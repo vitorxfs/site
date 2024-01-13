@@ -9,4 +9,11 @@ export default defineConfig({
   integrations: [tailwind(), sitemap(), react()],
   output: 'server',
   adapter: netlify(),
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es', 'pt'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });
