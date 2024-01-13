@@ -10,7 +10,7 @@ export const TooltipContent: React.FC<Props> = ({ contribution }) => {
   const count = contribution.count;
 
   return (
-    <div>
+    <div className="text-white">
       <p className="font-bold">{changeDateFormat(contribution.date, 'YYYY-MM-DD', 'DD/MM/YYYY')}</p>
 
       <p>
