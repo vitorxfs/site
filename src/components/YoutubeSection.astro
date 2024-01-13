@@ -13,17 +13,17 @@ Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=43200, must-rev
 ---
 
 <Section title="Youtube">
-  <ul class="flex gap-8">
+  <ul class="flex flex-col sm:flex-row gap-8">
     {
       videos?.map((video) => (
-        <li class="max-w-[500px]">
+        <li class="w-full">
           <a href={video.url} target="_blank">
             <img
               alt=""
               src={video.thumbnail.url}
               width={video.thumbnail.width}
               height={video.thumbnail.height}
-              class="object-cover aspect-video rounded-2xl"
+              class="object-cover aspect-video w-full rounded-2xl"
             />
             <p class="whitespace-normal mt-2">{video.title}</p>
           </a>
