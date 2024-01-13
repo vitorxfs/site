@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="relative">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -16,17 +16,77 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="dark:bg-black dark:text-white max-w-[1376px] mx-auto pt-12 px-8">
+  <body class="w-fit dark:bg-black dark:text-white max-w-[1376px] mx-auto pt-12 px-8">
+    <span class="noise" aria-hidden="true"></span>
     <slot />
   </body>
 </html>
 <style is:global>
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+
+  ::-moz-selection {
+    color: black;
+    background: #7bff81;
+  }
+
+  ::selection {
+    color: black;
+    background: #7bff81;
+  }
+
   @media (prefers-color-scheme: dark) {
     .text-lighter {
       color: #aaaaaa;
     }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #2f3038;
+    }
   }
-  .text-lighter {
-    color: #555555;
+  @media (prefers-color-scheme: light) {
+    .text-lighter {
+      color: #555555;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #917f75;
+    }
+  }
+
+  .noise::before {
+    content: '';
+    z-index: 99999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .noise::before {
+      opacity: 0.2;
+      background-image: url('/src/assets/img/noise-static.png');
+      background-size: 120px 120px;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .noise::before {
+      opacity: 0.6;
+      mix-blend-mode: multiply;
+      background-image: url('/src/assets/img/recycled-texture.png');
+      background-size: 500px 500px;
+    }
   }
 </style>
