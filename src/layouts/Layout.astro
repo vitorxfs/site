@@ -1,4 +1,6 @@
 ---
+import GlobalStyles from './GlobalStyles.astro';
+
 interface Props {
   title: string;
 }
@@ -17,50 +19,13 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="w-fit dark:bg-black dark:text-white max-w-[1376px] mx-auto pt-12 px-8">
+    <GlobalStyles />
     <span class="noise" aria-hidden="true"></span>
     <slot />
   </body>
 </html>
-<style is:global>
-  *::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
 
-  *::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: transparent;
-  }
-
-  ::-moz-selection {
-    color: black;
-    background: #7bff81;
-  }
-
-  ::selection {
-    color: black;
-    background: #7bff81;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .text-lighter {
-      color: #aaaaaa;
-    }
-
-    *::-webkit-scrollbar-thumb {
-      background-color: #2f3038;
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    .text-lighter {
-      color: #555555;
-    }
-
-    *::-webkit-scrollbar-thumb {
-      background-color: #917f75;
-    }
-  }
-
+<style>
   .noise::before {
     content: '';
     z-index: 99999;

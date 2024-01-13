@@ -1,0 +1,44 @@
+---
+
+---
+
+<style is:global>
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+
+  ::-moz-selection {
+    color: black;
+    background: #7bff81;
+  }
+
+  ::selection {
+    color: black;
+    background: #7bff81;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .text-lighter {
+      color: #aaaaaa;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #2f3038;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .text-lighter {
+      color: #555555;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #917f75;
+    }
+  }
+</style>
