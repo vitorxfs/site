@@ -10,6 +10,6 @@ const { contributions } = Astro.props;
 const yearContributionsCount = contributions.reduce((acc, { count }) => acc + count, 0);
 ---
 
-<p class="mb-2 text-gray-800 dark:text-gray-300">
+<p class="mb-2 text-gray-800 dark:text-gray-300 text-xs md:text-sm">
   {yearContributionsCount} Contribuições no último ano
 </p>
