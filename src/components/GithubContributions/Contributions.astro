@@ -15,9 +15,9 @@ export interface Props {
 const { contributions, color = 'default', footer = false, header = false, user } = Astro.props;
 ---
 
-<div class="w-fit h-fit flex flex-col self-center">
+<div class="w-full h-auto flex flex-col self-center">
   {header && <Header contributions={contributions} />}
-  <div class="grid grid-flow-col grid-rows-7 gap-1 w-fit">
+  <div class="grid grid-flow-col grid-rows-7 w-full gap-[1px] sm:gap-[2px] md:gap-[4px]">
     {contributions.map((c) => <Item contribution={c} color={color} client:idle />)}
   </div>
   {footer && <Footer color={color} user={user} />}

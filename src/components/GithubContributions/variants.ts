@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const contributionItemVariants = tv({
-  base: 'rounded-sm w-[12px] h-[12px] border',
+  base: 'rounded-sm max-w-[16px] height-[100%] aspect-square',
   variants: {
     color: {
       default: 'bg-green-800 border-green-900 dark:bg-green-400 dark:border-green-300',
