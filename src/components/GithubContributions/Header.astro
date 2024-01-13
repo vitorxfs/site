@@ -1,0 +1,15 @@
+---
+import type { Contribution } from '../../domain/Github.domain';
+
+interface Props {
+  contributions: Contribution[];
+}
+
+const { contributions } = Astro.props;
+
+const yearContributionsCount = contributions.reduce((acc, { count }) => acc + count, 0);
+---
+
+<p class="mb-2 text-gray-800 dark:text-gray-300">
+  {yearContributionsCount} Contribuições no último ano
+</p>

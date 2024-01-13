@@ -1,0 +1,20 @@
+---
+import Section from './Section.astro';
+
+import { getGithubService } from '../initializers/services.initializer';
+import { GITHUB_USER } from '../env';
+import GithubContributions from './GithubContributions';
+
+interface Props {}
+
+const githubService = getGithubService();
+const contributions = await githubService.getContributions('vitorxfs');
+
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=43200, must-revalidate');
+---
+
+<Section title="Github">
+  <a href={`https://github.com/${GITHUB_USER}`} target="_blank">
+    <GithubContributions contributions={contributions} user="vitorxfs" header footer />
+  </a>
+</Section>

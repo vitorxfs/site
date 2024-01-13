@@ -1,0 +1,24 @@
+---
+import type { Contribution } from '../../domain/Github.domain';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import Item from './Item.tsx';
+
+export interface Props {
+  contributions: Contribution[];
+  user: string;
+  color?: 'default' | 'primary' | 'secondary';
+  footer?: boolean;
+  header?: boolean;
+}
+
+const { contributions, color = 'default', footer = false, header = false, user } = Astro.props;
+---
+
+<div class="w-fit h-fit flex flex-col self-center">
+  {header && <Header contributions={contributions} />}
+  <div class="grid grid-flow-col grid-rows-7 gap-1 w-fit">
+    {contributions.map((c) => <Item contribution={c} color={color} client:idle />)}
+  </div>
+  {footer && <Footer color={color} user={user} />}
+</div>

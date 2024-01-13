@@ -1,0 +1,28 @@
+---
+import contributionItemVariants from './variants';
+
+interface Props {
+  color: 'default' | 'primary' | 'secondary';
+  user: string;
+}
+
+const { color, user } = Astro.props;
+---
+
+<div class="flex justify-between align-center mt-4">
+  <p class="text-indigo-400 text-xs underline ml-0">
+    {user}&apos;s github
+  </p>
+
+  <div class="flex gap-1 align-center">
+    <p class="flex text-xs text-gray-700 dark:text-gray-400">Menos</p>
+
+    <span class={contributionItemVariants({ count: 0, color })}></span>
+    <span class={contributionItemVariants({ count: 1, color })}></span>
+    <span class={contributionItemVariants({ count: 2, color })}></span>
+    <span class={contributionItemVariants({ count: 3, color })}></span>
+    <span class={contributionItemVariants({ count: 4, color })}></span>
+
+    <p class="flex text-xs text-gray-700 dark:text-gray-400">Mais</p>
+  </div>
+</div>
