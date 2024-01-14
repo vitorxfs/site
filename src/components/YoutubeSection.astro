@@ -1,5 +1,6 @@
 ---
 import Section from './Section.astro';
+import { Image } from 'astro:assets';
 
 import { getYoutubeService } from '../initializers/services.initializer';
 
@@ -18,11 +19,17 @@ Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=43200, must-rev
       videos?.map((video) => (
         <li class="w-full">
           <a href={video.url} target="_blank">
-            <img
+            <Image
               alt=""
               src={video.thumbnail.url}
-              width={video.thumbnail.width}
-              height={video.thumbnail.height}
+              widths={[300, 370, video.thumbnail.width || 480]}
+              sizes={`
+                (max-width: 370px) 300px,
+                (max-width: 440px): 370px,
+                ${video.thumbnail.width || 480}px
+              `}
+              width={video.thumbnail.width || 480}
+              height={video.thumbnail.height || 480}
               class="object-cover aspect-video w-full rounded-2xl"
             />
             <p class="whitespace-normal mt-2">{video.title}</p>
