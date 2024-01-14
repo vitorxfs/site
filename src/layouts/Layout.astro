@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useMetaTranslations } from '../i18n/utils';
 import GlobalStyles from './GlobalStyles.astro';
+import Noise from '../components/Noise.astro';
 
 interface Props {
   title: string;
@@ -24,38 +25,7 @@ const mt = useMetaTranslations(lang);
   </head>
   <body class="w-fit dark:bg-black dark:text-white max-w-[1376px] mx-auto pt-12 px-8">
     <GlobalStyles />
-    <span class="noise" aria-hidden="true"></span>
+    <Noise />
     <slot />
   </body>
 </html>
-
-<style>
-  .noise::before {
-    content: '';
-    z-index: 99999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: repeat;
-    pointer-events: none;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .noise::before {
-      opacity: 0.2;
-      background-image: url('/src/assets/img/noise-static.png');
-      background-size: 120px 120px;
-    }
-  }
-
-  @media (prefers-color-scheme: light) {
-    .noise::before {
-      opacity: 0.6;
-      mix-blend-mode: multiply;
-      background-image: url('/src/assets/img/recycled-texture.png');
-      background-size: 500px 500px;
-    }
-  }
-</style>
