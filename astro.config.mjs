@@ -8,7 +8,9 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind(), sitemap(), react()],
   output: 'server',
-  adapter: netlify(),
+  adapter: netlify({
+    imageCDN: true,
+  }),
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'pt'],
