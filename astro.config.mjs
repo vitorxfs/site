@@ -18,6 +18,7 @@ export default defineConfig({
   },
   output: 'server',
   adapter: vercel({
+    edgeMiddleware: true,
     webAnalitics: { enabled: true },
     maxDuration: 10,
     imageService: true,
