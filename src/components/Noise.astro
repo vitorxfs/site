@@ -1,18 +1,27 @@
 ---
+import { getImage } from 'astro:assets';
+import recycledImg from '../assets/img/recycled-texture.png';
+import noiseImg from '../assets/img/noise.png';
 
+const [optRecycledImg, optNoiseImg] = await Promise.all([
+  getImage({ src: recycledImg, format: 'webp', prerender: true }),
+  getImage({ src: noiseImg, format: 'webp' }),
+]);
+
+const recycledImgUrl = `url(${optRecycledImg.src})`;
+const noiseImgUrl = `url(${optNoiseImg.src})`;
 ---
 
 <span
-  class="bg-[url('/src/assets/img/recycled-texture.png')]
-    dark:bg-[url('/src/assets/img/noise.png')]
+  class={`
     dark:mix-blend-normal
-    dark:opacity-15
+    dark:opacity-10
     mix-blend-multiply
     noise
-    opacity-60"
+    opacity-60`}
   aria-hidden="true"></span>
 
-<style>
+<style define:vars={{ recycledImgUrl, noiseImgUrl }}>
   .noise {
     background-repeat: repeat;
     height: 100%;
@@ -22,5 +31,15 @@
     top: 0;
     width: 100%;
     z-index: 99999;
+  }
+
+  .noise {
+    background-image: var(--recycledImgUrl);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .noise {
+      background-image: var(--noiseImgUrl);
+    }
   }
 </style>
