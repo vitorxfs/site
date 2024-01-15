@@ -1,2 +1,0 @@
-[images]
-  remote_images = ['https://i1.ytimg.com/.*', 'https://i2.ytimg.com/.*', 'https://i3.ytimg.com/.*', 'https://i4.ytimg.com/.*']

@@ -35,11 +35,13 @@ const noiseImgUrl = `url(${optNoiseImg.src})`;
 
   .noise {
     background-image: var(--recycledImgUrl);
+    background-size: 500px 500px;
   }
 
   @media (prefers-color-scheme: dark) {
     .noise {
       background-image: var(--noiseImgUrl);
+      background-size: 100px 100px;
     }
   }
 </style>

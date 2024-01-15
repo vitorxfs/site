@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
-    "@astrojs/netlify": "^4.1.1",
     "@astrojs/react": "^3.0.9",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^6.1.4",
     "@fontsource-variable/montserrat": "^5.0.17",
     "@fontsource/yeseva-one": "^5.0.18",
     "@octokit/graphql": "^7.0.2",
