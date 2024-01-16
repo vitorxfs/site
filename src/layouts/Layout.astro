@@ -1,7 +1,11 @@
 ---
+import { SITE_BASE_URL, CANONICAL_URL, TWITTER_HANDLE } from '../env';
+import { getImage } from 'astro:assets';
 import { getLangFromUrl, useMetaTranslations } from '../i18n/utils';
 import GlobalStyles from './GlobalStyles.astro';
 import Noise from '../components/Noise.astro';
+import ogImage from '../assets/img/og.png';
+import SEO from '../components/SEO.astro';
 import SkipToMain from '../components/SkipToMain.astro';
 
 interface Props {
@@ -11,17 +15,25 @@ interface Props {
 const { title } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
-const mt = useMetaTranslations(lang);
+const m = useMetaTranslations(lang);
+
+const ogImageOpt = await getImage(ogImage);
 ---
 
 <!doctype html>
 <html lang={lang} class="relative">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={mt('description')} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description={m('description')}
+      ogImage={`${SITE_BASE_URL}${ogImageOpt.src}`}
+      twitterHandle={TWITTER_HANDLE}
+      canonical={CANONICAL_URL}
+    />
     <title>{title}</title>
   </head>
   <body class="w-fit dark:bg-black dark:text-white max-w-[1376px] mx-auto pt-12 px-8">

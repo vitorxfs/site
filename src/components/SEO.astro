@@ -1,0 +1,82 @@
+---
+import { SEO as AstroSEO } from 'astro-seo';
+
+interface Props {
+  /**
+   * A title for the page.
+   * @example John Doe's Website
+   */
+
+  title: string;
+
+  /**
+   * Provide a brief but sufficient description. Be sure to include searchable keywords;
+   * @example John Doe is an astro front-end developer. He loves javascript, typescript, react, node and other nerdy stuff.
+   */
+  description: string;
+
+  /**
+   * Open graph image source
+   * @example "https://www.external.com/public/image.png"
+   * @example "/public/path/to/file.png"
+   */
+  ogImage: string;
+
+  /**
+   * Alt text for OG Image.
+   * @see https://www.w3.org/WAI/tutorials/images/
+   */
+  ogImageAlt?: string;
+
+  /**
+   * Url to your canonical homepage
+   * @example https://www.yoursite.com/
+   */
+  canonical: string;
+
+  /**
+   * The open graph type of the page
+   * @default website
+   * @see https://ogp.me/#types
+   */
+  ogType?: 'website' | 'article' | string;
+
+  /**
+   * Your twitter/x.com handle
+   * @example @john_doe
+   */
+  twitterHandle?: string;
+}
+
+const {
+  canonical,
+  description,
+  ogImage,
+  ogImageAlt,
+  ogType = 'website',
+  title,
+  twitterHandle,
+} = Astro.props;
+---
+
+<AstroSEO
+  title={title}
+  description={description}
+  openGraph={{
+    basic: {
+      title: title,
+      image: ogImage,
+      type: ogType,
+      url: canonical,
+    },
+  }}
+  canonical={canonical}
+  twitter={{
+    title,
+    description,
+    creator: twitterHandle,
+    image: ogImage,
+    imageAlt: ogImageAlt,
+    site: canonical,
+  }}
+/>
