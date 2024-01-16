@@ -1,0 +1,22 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<a
+  class="absolute
+    top-[16px] left-2
+    opacity-0 focus:opacity-100 focus:top-[8px]
+    transition-all
+    px-4 py-2
+    outline-0
+    underline
+    dark:bg-white dark:text-black
+    bg-black text-white"
+  href="#main"
+  tabindex="1"
+>
+  {t('a11y.skiptomain')}
+</a>

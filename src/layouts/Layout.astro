@@ -2,6 +2,7 @@
 import { getLangFromUrl, useMetaTranslations } from '../i18n/utils';
 import GlobalStyles from './GlobalStyles.astro';
 import Noise from '../components/Noise.astro';
+import SkipToMain from '../components/SkipToMain.astro';
 
 interface Props {
   title: string;
@@ -25,6 +26,7 @@ const mt = useMetaTranslations(lang);
   </head>
   <body class="w-fit dark:bg-black dark:text-white max-w-[1376px] mx-auto pt-12 px-8">
     <GlobalStyles />
+    <SkipToMain />
     <Noise />
     <slot />
   </body>
