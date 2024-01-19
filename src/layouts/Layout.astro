@@ -7,6 +7,7 @@ import Noise from '../components/Noise.astro';
 import ogImage from '../assets/img/og.png';
 import SEO from '../components/SEO.astro';
 import SkipToMain from '../components/SkipToMain.astro';
+import { getNoiseLightSrc, getNoiseDarkSrc } from '../assets/optimized/noise';
 
 interface Props {
   title: string;
@@ -18,6 +19,8 @@ const lang = getLangFromUrl(Astro.url);
 const m = useMetaTranslations(lang);
 
 const ogImageOpt = await getImage(ogImage);
+
+const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), getNoiseDarkSrc()]);
 ---
 
 <!doctype html>
@@ -27,6 +30,8 @@ const ogImageOpt = await getImage(ogImage);
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preload" fetchpriority="high" as="image" type="image/webp" href={noiseLightSrc} />
+    <link rel="preload" fetchpriority="high" as="image" type="image/webp" href={noiseDarkSrc} />
     <SEO
       title={title}
       description={m('description')}

@@ -1,15 +1,10 @@
 ---
-import { getImage } from 'astro:assets';
-import recycledImg from '../assets/img/recycled-texture.png';
-import noiseImg from '../assets/img/noise.png';
+import { getNoiseLightSrc, getNoiseDarkSrc } from '../assets/optimized/noise';
 
-const [optRecycledImg, optNoiseImg] = await Promise.all([
-  getImage({ src: recycledImg, format: 'webp', prerender: true }),
-  getImage({ src: noiseImg, format: 'webp' }),
-]);
+const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), getNoiseDarkSrc()]);
 
-const recycledImgUrl = `url(${optRecycledImg.src})`;
-const noiseImgUrl = `url(${optNoiseImg.src})`;
+const noiseLightUrl = `url(${noiseLightSrc})`;
+const noiseDarkUrl = `url(${noiseDarkSrc})`;
 ---
 
 <span
@@ -21,7 +16,7 @@ const noiseImgUrl = `url(${optNoiseImg.src})`;
     opacity-60`}
   aria-hidden="true"></span>
 
-<style define:vars={{ recycledImgUrl, noiseImgUrl }}>
+<style define:vars={{ noiseLightUrl, noiseDarkUrl }}>
   .noise {
     background-repeat: repeat;
     height: 100%;
@@ -34,13 +29,13 @@ const noiseImgUrl = `url(${optNoiseImg.src})`;
   }
 
   .noise {
-    background-image: var(--recycledImgUrl);
+    background-image: var(--noiseLightUrl);
     background-size: 500px 500px;
   }
 
   @media (prefers-color-scheme: dark) {
     .noise {
-      background-image: var(--noiseImgUrl);
+      background-image: var(--noiseDarkUrl);
       background-size: 100px 100px;
     }
   }
