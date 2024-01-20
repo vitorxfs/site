@@ -2,7 +2,7 @@
 import type { Contribution } from '../../domain/Github.domain';
 import Footer from './Footer.astro';
 import Header from './Header.astro';
-import Item from './Item.tsx';
+import Item from './Item.astro';
 
 export interface Props {
   contributions: Contribution[];
@@ -18,7 +18,7 @@ const { contributions, color = 'default', footer = false, header = false, user }
 <div class="w-full h-auto flex flex-col self-center">
   {header && <Header contributions={contributions} />}
   <div class="grid grid-flow-col grid-rows-7 w-full gap-[1px] sm:gap-[2px] md:gap-[4px]">
-    {contributions.map((c) => <Item contribution={c} color={color} client:idle />)}
+    {contributions.map((c, i) => <Item contribution={c} color={color} index={i} />)}
   </div>
   {footer && <Footer color={color} user={user} />}
 </div>

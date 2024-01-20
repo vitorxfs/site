@@ -6,7 +6,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<section>
+<section aria-label={title}>
   <h2 class="text-lg sm:text-2xl uppercase tracking-[0.2em] font-bold mb-8">{title}</h2>
   <div>
     <slot />

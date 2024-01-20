@@ -1,0 +1,58 @@
+---
+import { type Contribution } from '../../domain/Github.domain.ts';
+import contributionItemVariants from './variants.ts';
+import TooltipContent from './TooltipContent.astro';
+
+interface Props {
+  contribution: Contribution;
+  color: 'default' | 'primary' | 'secondary';
+  index: number;
+}
+
+const { contribution: c, color, index } = Astro.props;
+---
+
+<div class="tooltip-trigger">
+  <div
+    class={contributionItemVariants({ count: c.level, color })}
+    aria-labelledby={`contributions-${index}`}
+  >
+  </div>
+
+  <div
+    id={`contributions-${index}`}
+    class="bg-gray-900 text-xs text-white dark:text-black dark:bg-white px-2 py-1 rounded tooltip"
+  >
+    <TooltipContent contribution={c} />
+  </div>
+</div>
+
+<style>
+  .tooltip {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999999;
+    top: 4px;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 5px));
+  }
+
+  .tooltip-trigger {
+    position: relative;
+  }
+
+  .tooltip-trigger:hover > .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity ease 200ms;
+  }
+
+  .tooltip-trigger:not(:nth-child(n + 15)) > .tooltip {
+    transform: translate(-10%, calc(-100% - 10px));
+  }
+
+  .tooltip-trigger:not(:nth-last-child(n + 16)) > .tooltip {
+    transform: translate(-90%, calc(-100% - 10px));
+  }
+</style>

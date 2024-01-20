@@ -1,0 +1,21 @@
+---
+import type { Contribution } from '../../domain/Github.domain';
+import { changeDateFormat } from '../../helpers/date.helper';
+
+interface Props {
+  contribution: Contribution;
+}
+
+const { contribution } = Astro.props;
+const count = contribution.count;
+---
+
+<div>
+  <p class="font-bold">{changeDateFormat(contribution.date, 'YYYY-MM-DD', 'DD/MM/YYYY')}</p>
+
+  <p class="whitespace-nowrap">
+    {count === 0 ? 'Nenhuma' : count}
+    {` `}
+    {count <= 1 ? 'contribuição' : 'contribuições'}
+  </p>
+</div>
