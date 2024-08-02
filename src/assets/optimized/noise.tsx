@@ -7,7 +7,6 @@ let noiseDarkSrc: string | undefined = undefined;
 
 export const getNoiseLightSrc = async (): Promise<string> => {
   if (!noiseLightSrc) {
-    console.log('rodou');
     noiseLightSrc = (await getImage({ src: recycledImg, format: 'webp', prerender: true })).src;
   }
 

@@ -8,6 +8,7 @@ import ogImage from '../assets/img/og.png';
 import SEO from '../components/SEO.astro';
 import SkipToMain from '../components/SkipToMain.astro';
 import { getNoiseLightSrc, getNoiseDarkSrc } from '../assets/optimized/noise';
+import ThirdPartyConfig from '../components/ThirdPartyConfig.astro';
 
 interface Props {
   title: string;
@@ -46,5 +47,7 @@ const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), get
     <SkipToMain />
     <Noise />
     <slot />
+
+    <ThirdPartyConfig />
   </body>
 </html>
