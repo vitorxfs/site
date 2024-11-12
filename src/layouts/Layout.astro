@@ -36,6 +36,7 @@ const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), get
     <meta name="generator" content={Astro.generator} />
     <link rel="preload" fetchpriority="high" as="image" type="image/webp" href={noiseLightSrc} />
     <link rel="preload" fetchpriority="high" as="image" type="image/webp" href={noiseDarkSrc} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
       title={title}
       description={m('description')}
