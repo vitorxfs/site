@@ -1,13 +1,18 @@
 ---
+import dayjs from 'dayjs';
+
 import Layout from '@/layouts/Layout.astro';
 
 const posts = await Astro.glob('../../../posts/*.md');
+const sortedPosts = posts.toSorted((a, b) =>
+  dayjs(b.frontmatter.date).diff(dayjs(a.frontmatter.date))
+);
 ---
 
 <Layout title="Blog">
   <ul class="flex flex-col gap-16">
     {
-      posts.map((post) => (
+      sortedPosts.map((post) => (
         <li>
           <a href={`/blog/${post.file.split('/').toReversed()[0].split('.')[0]}`} class="group">
             <p class="text-2xl font-bold group-hover:underline">{post.frontmatter.title}</p>
