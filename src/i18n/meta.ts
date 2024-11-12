@@ -1,14 +1,14 @@
 export const meta = {
   pt: {
     description:
-      'Sou desenvolvedor web com foco no front end. Possuo experiência com react, node, ux/ui e no momento estou me aventurando com astro.build e performance web.',
+      'Desenvolvedor Web, formado em Ciências da Computação pela Unesp e apaixonado por música.',
   },
   es: {
     description:
-      'Soy desarrollador web nfocado en el front end. Tengo experiencia con react, node, ux/ui y actualmente estoy explorando el astro.build y la web performance.',
+      'Web Developer, with a degree in Computer Science by São Paulo State University and in love with music.',
   },
   en: {
     description:
-      "I'm a web developer focused in the front end. I have experience with react, node, ux/ui and lately I have been exploring astro.build and web performance.",
+      'Desarrollador Web, graduado en Ciencias de la Computación por la Universidad Estatal de São Paulo (Unesp) y amante de musica.',
   },
 } as const;

@@ -44,4 +44,9 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+    },
+  },
 });

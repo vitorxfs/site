@@ -1,0 +1,34 @@
+---
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: 'pt' | 'en' | 'es';
+}
+const { lang } = Astro.props;
+
+const t = useTranslations(lang);
+---
+
+<div
+  class={`
+    mt-20 mb-32 mx-auto pt-12 pb-20 px-12
+    max-w-xl flex flex-col gap-4 items-center
+    bg-green-300 rounded-3xl
+    text-black drop-shadow-xl
+  `}
+  itemprop="author"
+  itemscope
+  itemtype="https://schema.org/Person"
+>
+  <img
+    alt=""
+    src="https://github.com/vitorxfs.png"
+    height="80"
+    width="80"
+    class="rounded-2xl drop-shadow-xl"
+  />
+  <p class="text-2xl font-bold" itemprop="name">Vitor Sanches</p>
+  <p class="text-center" itemprop="description">
+    {t('blog.profile.description')}
+  </p>
+</div>
