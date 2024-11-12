@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const posts: MarkdownInstance<Record<string, any>>[] = await Astro.glob('../../../posts/*.md');
 
   return posts.map((p) => ({
-    params: { slug: p.file.split('/').toReversed()[0].replace('.md', '') },
+    params: { slug: p.file.split('/').toReversed()[0].split('.')[0] },
   }));
 }
 
