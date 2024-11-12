@@ -1,0 +1,20 @@
+---
+interface Props {
+  icon: string;
+}
+
+const { icon } = Astro.props;
+---
+
+<span
+  class={`
+    flex items-center mb-8 gap-2 border-b pr-1 pb-0 leading-5
+    text-blue-700  border-blue-700
+    hover:text-blue-500 hover:border-blue-500
+    dark:text-blue-300  dark:border-blue-300
+    cursor-pointer
+  `}
+>
+  <span class="font-icon text-xl leading-5">{icon}</span>
+  <slot />
+</span>

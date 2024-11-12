@@ -2,21 +2,11 @@
 import BlogSection from '../../components/BlogSection.astro';
 import GithubSection from '../../components/GithubSection.astro';
 import YoutubeSection from '../../components/YoutubeSection.astro';
-import '@fontsource/yeseva-one';
 ---
 
-<header>
-  <h1 class="pageTitle text-[42px] mb-14 sm:text-[64px] sm:mb-[92px]">Vitor Sanches</h1>
-</header>
-<main id="main" class="flex flex-col gap-20">
-  <YoutubeSection />
+<div class="flex flex-col gap-20">
   <BlogSection />
+  <YoutubeSection />
   <GithubSection />
-</main>
+</div>
 <footer class="h-28"></footer>
-
-<style>
-  .pageTitle {
-    font-family: 'Yeseva One', sans-serif;
-  }
-</style>

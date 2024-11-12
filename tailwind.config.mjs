@@ -7,8 +7,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Montserrat Variable', ...defaultTheme.fontFamily.sans],
+        serif: ['Yeseva One', ...defaultTheme.fontFamily.serif],
+        icon: ['Material Symbols Rounded'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

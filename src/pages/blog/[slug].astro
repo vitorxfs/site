@@ -1,0 +1,29 @@
+---
+import type { MarkdownInstance } from 'node_modules/astro/dist/@types/astro';
+
+import Layout from '@/layouts/Layout.astro';
+import PostLayout from '@/layouts/PostLayout.astro';
+import Prose from '@/components/Prose.astro';
+import type { Frontmatter } from '@/layouts/PostLayout.astro';
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const posts: MarkdownInstance<Record<string, any>>[] = await Astro.glob('../../../posts/*.md');
+
+  return posts.map((p) => ({
+    params: { slug: p.file.split('/').reverse()[0].split('.')[0] },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await import(`../../../posts/${slug}.md`);
+const { Content, frontmatter } = post as MarkdownInstance<Frontmatter>;
+---
+
+<Layout title={frontmatter.title}>
+  <PostLayout frontmatter={frontmatter}>
+    <Prose>
+      <Content />
+    </Prose>
+  </PostLayout>
+</Layout>

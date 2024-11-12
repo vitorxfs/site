@@ -38,10 +38,15 @@ export default defineConfig({
     imageService: true,
   }),
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es', 'pt'],
+    defaultLocale: 'pt',
+    locales: ['pt'],
     routing: {
       prefixDefaultLocale: false,
+    },
+  },
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
     },
   },
 });

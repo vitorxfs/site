@@ -1,0 +1,67 @@
+---
+import { formatDateToLocaleString } from '@/helpers/date.helper';
+import { useTranslations } from '@/i18n/utils';
+import IconLink from '@/components/IconLink.astro';
+import PostProfile from '@/components/PostProfile.astro';
+
+export interface Frontmatter {
+  title: string;
+  slug: string;
+  author: string;
+  description: string;
+  date: string;
+  tags: string[];
+}
+
+interface Props {
+  frontmatter: Frontmatter;
+}
+
+const { frontmatter } = Astro.props;
+
+const lang = 'pt';
+
+const date = formatDateToLocaleString(new Date(frontmatter.date), lang);
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col items-center">
+  <article class="w-full max-w-4xl" itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="w-full mb-12 flex flex-col items-start">
+      <button onclick="history.back()">
+        <IconLink icon="arrow_left_alt">{t('back')}</IconLink>
+      </button>
+
+      <p class="text-gray-800 dark:text-gray-400">
+        <time itemprop="datePublished" datetime={frontmatter.date.toString()}>
+          {date}
+        </time>
+      </p>
+
+      <h1 class="text-4xl font-extrabold mb-1" itemprop="name">
+        {frontmatter.title}
+      </h1>
+
+      <h2 class="text-gray-800 dark:text-gray-400 text-2xl mb-6">{frontmatter.description}</h2>
+
+      <div class="flex flex-wrap gap-4" itemprop="keywords">
+        {
+          frontmatter.tags.map((tag) => (
+            <span class="px-2 py-1 bg-gray-200 dark:bg-gray-900 rounded-lg text-nowrap">
+              <span class="text-green-400">#</span>
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </header>
+
+    <section class="" itemprop="articleBody">
+      <slot />
+    </section>
+
+    <footer>
+      <PostProfile lang={lang} />
+    </footer>
+  </article>
+</div>
