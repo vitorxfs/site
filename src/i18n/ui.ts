@@ -4,7 +4,7 @@ export const languages = {
   es: 'Spanish',
 };
 
-export const defaultLang = 'en';
+export const defaultLang = 'pt';
 
 export const ui = {
   pt: {
@@ -15,6 +15,7 @@ export const ui = {
     'github.less': 'menos',
     'github.more': 'mais',
     'github.year-contributions': 'contribuições no último ano',
+    'home.blog.see-all-posts': 'Ver todos os posts',
   },
   en: {
     'a11y.skiptomain': 'Skip to main content',
@@ -24,6 +25,7 @@ export const ui = {
     'github.less': 'less',
     'github.more': 'more',
     'github.year-contributions': 'contributions in the last year',
+    'home.blog.see-all-posts': 'See all posts',
   },
   es: {
     'a11y.skiptomain': 'Saltar al contenido principal',
@@ -33,5 +35,6 @@ export const ui = {
     'github.less': 'menos',
     'github.more': 'más',
     'github.year-contributions': 'contribuciones en el último año',
+    'home.blog.see-all-posts': 'Ver todas las publicaciones',
   },
 } as const;

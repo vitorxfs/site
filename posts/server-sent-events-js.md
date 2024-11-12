@@ -76,7 +76,7 @@ Quando estamos trabalhando com LLM, muitas vezes queremos enviar ao cliente meta
 
 No entanto, passar um JSON seguindo a estratégia acima não seria muito prático, pois teríamos como resposta algo nesse sentido:
 
-```txt
+```plaintext
 chunk 1:
 "{\"text\":\"Lorem ips
 
@@ -89,7 +89,7 @@ chunk 3:
 
 Por conta disso, algumas ferramentas, como o próprio ChatGPT têm utilizado Server-Sent Events (Eventos Enviados pelo Servidor) para fazer essa comunicação. Dessa forma, temos pedaços de JSON completos, resultando em algo mais ou menos assim:
 
-```txt
+```plaintext
 event 1:
 { "text": "Lorem ipsum dol" }
 
@@ -104,20 +104,20 @@ A partir dessa resposta, no front-end, realizamos a montagem desse texto conform
 
 Para implementar o formato, precisamos definir os seguintes cabeçalhos para nossa resposta:
 
-```txt
+```plaintext
 Content-Type: text/event-stream
 Cache-Control: no-cache
 ```
 
 Então, podemos enviar cada chunk em um evento diferente utilizando o seguinte formato de string:
 
-```txt
+```plaintext
 data: { \"text\": \"Lorem ipsum dol\" }\n\n
 ```
 
 Caso for necessário, podemos adicionar outros tipos de informação, como o tipo de evento ou um identificador:
 
-```txt
+```plaintext
 id: 0
 data: { \"text\": \"Lorem ipsum dol\" }
 event: update
@@ -152,7 +152,7 @@ res.end();
 
 Repare, a quebra de linha dupla (\n\n) é obrigatória ao final de cada evento. Se eu estivesse passando o id e o event, deveríamos passar a string:
 
-```txt
+```plaintext
 id:0\nevent:update\ndata:value\n\n
 ```
 

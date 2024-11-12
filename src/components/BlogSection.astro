@@ -1,28 +1,47 @@
 ---
 import Section from './Section.astro';
-
-import { getMediumService } from '../initializers/services.initializer';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
 interface Props {}
 
-const mediumService = getMediumService();
-const data = await mediumService.getPosts('vitorsnx');
-const posts = data.slice(0, 2);
+// TODO: When posts are internationalized, get the title and description dinamically.
+const posts = [
+  {
+    url: '/blog/server-sent-events-js',
+    title: 'WebStreams e Server-Sent Events no Javascript​',
+    description: 'Estratégias para envio de respostas de modelos de linguagem para o cliente.',
+  },
+  {
+    url: '/blog/100-score-in-lighthouse-with-astro',
+    title: 'Como atingir nota 100 em performance no Lighthouse utilizando o Astro.build?​',
+    description: 'Ou, “Por que o Astro é o meu framework front-end preferido?”',
+  },
+];
 
-Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=43200, must-revalidate');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Section title="Blog">
-  <ul class="flex flex-col md:flex-row gap-8">
-    {
-      posts?.map((post) => (
-        <li class="w-full">
-          <a href={post.url} target="_blank">
-            <h3 class="text-2xl font-bold">{post.title}</h3>
-            <p class="whitespace-normal mt-2 text-xl text-lighter">{post.description}</p>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="flex flex-col items-center">
+    <ul class="flex flex-col md:flex-row gap-8">
+      {
+        posts?.map((post) => (
+          <li class="w-full group">
+            <a href={post.url}>
+              <h3 class="text-xl font-bold group-hover:underline">{post.title}</h3>
+              <p class="whitespace-normal mt-2 text-lg text-lighter">{post.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a href="/blog" class="w-fit flex items-center gap-2 mt-8 group">
+      {t('home.blog.see-all-posts')}
+      <span class="font-icon text-xl leading-5 group-hover:translate-x-1 transition-transform"
+        >arrow_right_alt</span
+      >
+    </a>
+  </div>
 </Section>

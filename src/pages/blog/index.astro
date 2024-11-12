@@ -2,14 +2,21 @@
 import dayjs from 'dayjs';
 
 import Layout from '@/layouts/Layout.astro';
+import IconLink from '@/components/IconLink.astro';
+import { useTranslations } from '@/i18n/utils';
 
 const posts = await Astro.glob('../../../posts/*.md');
 const sortedPosts = posts.toSorted((a, b) =>
   dayjs(b.frontmatter.date).diff(dayjs(a.frontmatter.date))
 );
+
+const t = useTranslations('pt');
 ---
 
 <Layout title="Blog">
+  <button onclick="history.back()">
+    <IconLink icon="arrow_left_alt">{t('back')}</IconLink>
+  </button>
   <ul class="flex flex-col gap-16">
     {
       sortedPosts.map((post) => (
