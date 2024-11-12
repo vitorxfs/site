@@ -4,9 +4,10 @@ import dayjs from 'dayjs';
 import Layout from '@/layouts/Layout.astro';
 import IconLink from '@/components/IconLink.astro';
 import { useTranslations } from '@/i18n/utils';
+import { toSorted } from '@/helpers/array.helper';
 
 const posts = await Astro.glob('../../../posts/*.md');
-const sortedPosts = posts.toSorted((a, b) =>
+const sortedPosts = toSorted<(typeof posts)[0]>(posts, (a, b) =>
   dayjs(b.frontmatter.date).diff(dayjs(a.frontmatter.date))
 );
 
