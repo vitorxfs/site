@@ -1,17 +1,17 @@
 ---
-import '@fontsource/yeseva-one';
 import '@fontsource/material-symbols-rounded';
+import '@fontsource/yeseva-one';
 import { getImage } from 'astro:assets';
 
-import { getLangFromUrl, useMetaTranslations } from '../i18n/utils';
-import { getNoiseLightSrc, getNoiseDarkSrc } from '../assets/optimized/noise';
-import { SITE_BASE_URL, CANONICAL_URL, TWITTER_HANDLE } from '../env';
-import GlobalStyles from './GlobalStyles.astro';
-import Noise from '../components/Noise.astro';
 import ogImage from '../assets/img/og.png';
+import { getNoiseDarkSrc, getNoiseLightSrc } from '../assets/optimized/noise';
+import Noise from '../components/Noise.astro';
 import SEO from '../components/SEO.astro';
 import SkipToMain from '../components/SkipToMain.astro';
 import ThirdPartyConfig from '../components/ThirdPartyConfig.astro';
+import { CANONICAL_URL, SITE_BASE_URL, TWITTER_HANDLE } from '../env';
+import { getLangFromUrl, useMetaTranslations } from '../i18n/utils';
+import GlobalStyles from './GlobalStyles.astro';
 
 interface Props {
   title: string;
@@ -46,7 +46,7 @@ const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), get
     />
     <title>{title}</title>
   </head>
-  <body class="dark:bg-black dark:text-white max-w-4xl mx-auto min-h-[100vh] pt-8 px-8">
+  <body class="dark:bg-black dark:text-white max-w-4xl mx-auto min-h-[100vh] p-8">
     <GlobalStyles />
     <SkipToMain />
     <Noise />
