@@ -27,7 +27,17 @@ const ogImageOpt = await getImage({ src: ogImage });
 const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), getNoiseDarkSrc()]);
 ---
 
-<!doctype html>
+<script>
+  import { addWordListener } from '@/helpers/wordListener.helper';
+
+  addWordListener('matrix', () => {
+    document.body.style.fontFamily = 'monospace';
+    const style = document.createElement('style');
+    style.textContent = `* { color: #86EFAC; }`;
+    document.head.appendChild(style);
+  });
+</script>
+
 <html lang={lang} class="relative">
   <head>
     <meta charset="UTF-8" />
