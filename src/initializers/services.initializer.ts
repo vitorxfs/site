@@ -1,8 +1,8 @@
 import { GITHUB_KEY, MEDIUM_FEED_BASE_URL, YOUTUBE_FEED_BASE_URL } from '../env';
-import { MediumService, type MediumAdapter } from '../services/medium/medium.service';
-import GithubService, { type GithubAdapter } from '../services/github/github.service';
 import GithubServiceOctokitAdapter from '../services/github/github-octokit.adapter';
+import GithubService, { type GithubAdapter } from '../services/github/github.service';
 import MediumRSSAdapter from '../services/medium/medium-rss.adapter';
+import { MediumService, type MediumAdapter } from '../services/medium/medium.service';
 import YoutubeRSSAdapter from '../services/youtube/youtube-rss.adapter';
 import YoutubeService, { type YoutubeAdapter } from '../services/youtube/youtube.service';
 

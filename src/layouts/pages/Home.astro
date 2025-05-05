@@ -1,4 +1,5 @@
 ---
+import { GITHUB_KEY } from '@/env';
 import BlogSection from '../../components/BlogSection.astro';
 import GithubSection from '../../components/GithubSection.astro';
 import YoutubeSection from '../../components/YoutubeSection.astro';
@@ -7,6 +8,6 @@ import YoutubeSection from '../../components/YoutubeSection.astro';
 <div class="flex flex-col gap-20">
   <BlogSection />
   <YoutubeSection />
-  <GithubSection />
+  {GITHUB_KEY && <GithubSection />}
 </div>
 <footer class="h-28"></footer>

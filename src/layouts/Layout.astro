@@ -22,7 +22,7 @@ const { title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const m = useMetaTranslations(lang);
 
-const ogImageOpt = await getImage(ogImage);
+const ogImageOpt = await getImage({ src: ogImage });
 
 const [noiseLightSrc, noiseDarkSrc] = await Promise.all([getNoiseLightSrc(), getNoiseDarkSrc()]);
 ---
